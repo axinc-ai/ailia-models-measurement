@@ -1,0 +1,6 @@
+[submodule "map/ailia-models"]
+	path = map/ailia-models
+	url = git@github.com:axinc-ai/ailia-models.git
+[submodule "map/Object-Detection-Metrics"]
+	path = map/Object-Detection-Metrics
+	url = https://github.com/axinc-ai/Object-Detection-Metrics
