@@ -1,11 +1,13 @@
 # Validate ArcFace and VGGFace2
 
-### usage
+## usage
 
 Compute a confusion matrix from a set of face images.
 
 ```bash
 $ python3 validation.py -i ./CASIA-WebFace
+$ python3 validation.py -i ./lfw-align-128 -a arcface
+$ python3 validation.py -i ./lfw-align-128 -a vggface2
 ```
 
 The dataset folder must be divided into folders for each person.
@@ -17,6 +19,8 @@ An example of the folder structure is shown below.
 ./CASIA-WebFace/0000045/002.jpg
 ./CASIA-WebFace/0000099/001.jpg
 ```
+
+## dataset generation
 
 Cut out a facial region from the dataset.
 
