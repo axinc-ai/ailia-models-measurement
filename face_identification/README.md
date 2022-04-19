@@ -2,12 +2,12 @@
 
 ## usage
 
-Compute a confusion matrix from a set of face images.
+Compute a confusion matrix from a set of face images. If you set `--skip`, we only use first 100 person.
 
 ```bash
-$ python3 validation.py -i ./CASIA-WebFace
-$ python3 validation.py -i ./lfw-align-128 -a arcface
-$ python3 validation.py -i ./lfw-align-128 -a vggface2
+$ python3 validation.py -i ./CASIA-WebFace --skip
+$ python3 validation.py -i ./lfw-align-128 -a arcface --skip
+$ python3 validation.py -i ./lfw-align-128 -a vggface2 --skip
 ```
 
 The dataset folder must be divided into folders for each person.

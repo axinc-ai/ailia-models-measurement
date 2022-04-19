@@ -160,7 +160,7 @@ def get_evaluation_files(input):
                 NUM_SKIP_PER_PERSON = 4
                 if(len(file_dict[folder]) >= NUM_SKIP_PER_PERSON):
                     continue
-                NUM_SKIP_PERSON = 16
+                NUM_SKIP_PERSON = 100
                 if folder_cnt >= NUM_SKIP_PERSON:
                     continue
             file_dict[folder].append(src_dir+"/"+file_)
@@ -315,12 +315,12 @@ def display_result(file_list, fe_list):
     ax2.set_title('detected (threshold '+str(best_threshold) +
                   ' accuracy '+str(best_accuracy)+' %)')
     ax2.set_xlabel('(face2)')
-    ax2.set_ylabel('(face1')
+    ax2.set_ylabel('(face1)')
     ax2.legend(loc='upper right')
 
     ax3.set_title('similality')
     ax3.set_xlabel('(face2)')
-    ax3.set_ylabel('(face1')
+    ax3.set_ylabel('(face1)')
     ax3.legend(loc='upper right')
 
     fig.savefig("confusion_"+args.arch+".png", dpi=100)
