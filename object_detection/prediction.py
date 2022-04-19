@@ -53,7 +53,7 @@ def predict(model_name, data, label_filter=None):
     if not os.path.exists(pred_dir):
         os.makedirs(pred_dir)
 
-    work_dir = os.path.join('ailia-models', 'object_detection', model_name)
+    work_dir = os.path.join('../ailia-models', 'object_detection', model_name)
     if os.path.exists(os.path.join(data_dir, 'images.txt')) :
         with open(os.path.join(data_dir, 'images.txt')) as f:
             src_path = f.read()

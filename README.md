@@ -2,6 +2,7 @@
 
 Accuracy measurement script for ailia-models
 
-## Object Detection
+## Metrics
 
-[mAP](./map/)
+- [object_detection](./object_detection/)
+- [super_resolution](./super_resolution/)
