@@ -10,6 +10,8 @@ $ python3 validation.py -i ./lfw-align-128 -a arcface --skip
 $ python3 validation.py -i ./lfw-align-128 -a vggface2 --skip
 ```
 
+## dataset structure
+
 The dataset folder must be divided into folders for each person.
 
 An example of the folder structure is shown below.
@@ -19,6 +21,16 @@ An example of the folder structure is shown below.
 ./CASIA-WebFace/0000045/002.jpg
 ./CASIA-WebFace/0000099/001.jpg
 ```
+
+## output
+
+### arcface lfw 100 person
+
+![confusion_arcface.png](confusion_arcface.png)
+
+### vggface2 lfw 100 person
+
+![confusion_vggface2.png](confusion_vggface2.png)
 
 ## dataset generation
 
