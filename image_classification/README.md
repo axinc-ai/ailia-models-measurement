@@ -13,10 +13,18 @@ https://www.kaggle.com/c/imagenet-object-localization-challenge/overview/descrip
 
 ### Prediction 
 
-Predict accuracy using MODEL.
+Predict labels using MODEL.
 
 ```
 python3 prediction.py -m MODEL
+```
+
+### Calculate accuracy
+
+Calculate accuracy using prediction result.
+
+```
+python3 map.py -m MODEL -d imagenet
 ```
 
 ### Example

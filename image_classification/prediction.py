@@ -17,6 +17,10 @@ parser.add_argument(
     help='specify the datasets. (imagenet, or custom)'
 )
 parser.add_argument(
+    '-t', '--tflite', action='store_true',
+    help='use tflite model'
+)
+parser.add_argument(
     '-p', '--param', metavar='KEY=VALUE', default=[], nargs='*',
     help='Add a model parameter.'
 )
@@ -33,6 +37,8 @@ def predict(model_name, data):
     data_dir = os.path.join('data', data)
     name = data
     name2 = name if not args.param else '%s__%s' % (name, '_'.join([x.replace('=', '_').replace('.', '_') for x in args.param]))
+    name2 = name2 if not args.tflite else '%s_tflite' % name2
+
     pred_dir = os.path.join('evaluation', model_name, name2, 'predictions')
     gt_dir = os.path.join('evaluation', model_name, name2, 'groundtruths')
     gt_src_dir = os.path.join('data', data, 'groundtruths')
@@ -40,7 +46,10 @@ def predict(model_name, data):
     if not os.path.exists(pred_dir):
         os.makedirs(pred_dir)
 
-    work_dir = os.path.join('../ailia-models', 'image_classification', model_name)
+    if args.tflite:
+        work_dir = os.path.join('../ailia-models-tflite', 'image_classification', model_name)
+    else:
+        work_dir = os.path.join('../ailia-models', 'image_classification', model_name)
     src_path = os.path.join('data', data, 'images')
     cmd = [
         sys.executable,
