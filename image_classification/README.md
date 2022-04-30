@@ -54,7 +54,8 @@ By default, the aspect ratio is ignored and the image size is resized to 224x224
 
 ### Example
 
-See [example.sh](./example.sh).
+- [example_onnx.sh](./example_onnx.sh).
+- [example_tflite.sh](./example_tflite.sh).
 
 ## Evaluation Result
 

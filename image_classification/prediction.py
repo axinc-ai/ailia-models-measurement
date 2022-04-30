@@ -59,8 +59,11 @@ def predict(model_name, data):
         '--write_prediction',
     ]
     for kv in args.param:
-        key, value = kv.split('=')
-        cmd.extend(['-%s' % key, value])
+        if '=' in kv:
+            key, value = kv.split('=')
+            cmd.extend(['-%s' % key, value])
+        else:
+            cmd.extend(['--%s' % kv])
 
     print("Predicting images ...")
     try:
