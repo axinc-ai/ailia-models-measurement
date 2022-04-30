@@ -40,8 +40,6 @@ def predict(model_name, data):
     name2 = name2 if not args.tflite else '%s_tflite' % name2
 
     pred_dir = os.path.join('evaluation', model_name, name2, 'predictions')
-    gt_dir = os.path.join('evaluation', model_name, name2, 'groundtruths')
-    gt_src_dir = os.path.join('data', data, 'groundtruths')
 
     if not os.path.exists(pred_dir):
         os.makedirs(pred_dir)
@@ -71,20 +69,9 @@ def predict(model_name, data):
     except sp.CalledProcessError:
         pass
 
-    if not os.path.exists(gt_dir):
-        os.makedirs(gt_dir)
-
     for res_path in sorted(glob.glob(os.path.join(pred_dir, '*_res.txt'))):
         file_path = res_path.replace('_res.txt', '.txt')
         shutil.move(res_path, file_path)
-
-        file_name = file_path.rsplit(os.sep, 1)[-1]
-        gt_file = os.path.join(gt_dir, file_name)
-        gt_src_file = os.path.join(gt_src_dir, file_name)
-        if not os.path.exists(gt_src_file):
-            continue
-        
-        shutil.copyfile(gt_src_file, gt_file)
 
     print('\nPrediction complete.')
     print('Predict output name:', name2)

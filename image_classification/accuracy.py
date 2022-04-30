@@ -46,19 +46,15 @@ def load_gts():
 def accuracy(model_name, data):
     if os.path.isdir(data):
         pred_dir = os.path.join(data, 'predictions')
-        gt_dir = os.path.join(data, 'groundtruths')
         result_dir = os.path.join(
             'results', model_name, data.replace(os.sep, '/').rsplit('/', 1)[-1]
         )
     else:
         pred_dir = os.path.join('evaluation', model_name, data, 'predictions')
-        gt_dir = os.path.join('evaluation', model_name, data, 'groundtruths')
         result_dir = os.path.join('results', model_name, data)
 
     if not os.path.exists(pred_dir):
         raise Exception('Directory does not exist \'%s\'' % pred_dir)
-    if not os.path.exists(gt_dir):
-        raise Exception('Directory does not exist \'%s\'' % gt_dir)
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
@@ -78,7 +74,7 @@ def accuracy(model_name, data):
         name = f.split("/")[-1].split(".")[0]
         gt = gt_dict[name]
         gt_id = label_dict[gt]
-        print("filepath : ",name,"gt_label : ",gt,"gt_id : ",gt_id)
+        #print("filepath : ",name,"gt_label : ",gt,"gt_id : ",gt_id)
         fh1 = open(f, "r")
         line_cnt = 0
         for line in fh1:

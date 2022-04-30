@@ -48,6 +48,25 @@ Calculate accuracy using prediction result.
 python3 map.py -m MODEL -d imagenet
 ```
 
+### TTA
+
+By default, the aspect ratio is ignored and the image size is resized to 224x224. When CenterCrop is enabled, it maintains the aspect ratio, resizes the short side to 256, and then crops to 224x224. (1-crop-testing)
+
 ### Example
 
 See [example.sh](./example.sh).
+
+## Evaluation Result
+
+ImageNet 50000 Validation Images
+
+|model|Format|InferenceEngine|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|-----|-----|
+|resnet50.opt (chainer)|ONNX|ailia SDK 1.2.11|None|N/A|N/A|
+|resnet50_pytorch|ONNX|ailia SDK 1.2.11|None|N/A|N/A|
+|resnet50_pytorch|ONNX|ailia SDK 1.2.11|1-crop|N/A|N/A|
+|resnet50 (float)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
+|resnet50 (float)|tflite|TensorFlowLite|None|N/A|N/A|
+|resnet50 (int8)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
+|resnet50 (int8)|tflite|TensorFlowLite|None|N/A|N/A|
+
