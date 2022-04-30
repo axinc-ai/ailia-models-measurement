@@ -62,11 +62,22 @@ ImageNet 50000 Validation Images
 
 |model|Format|InferenceEngine|TTA|TOP1|TOP5|
 |-----|-----|-----|-----|-----|-----|
-|resnet50.opt (chainer)|ONNX|ailia SDK 1.2.11|None|N/A|N/A|
-|resnet50_pytorch|ONNX|ailia SDK 1.2.11|None|N/A|N/A|
-|resnet50_pytorch|ONNX|ailia SDK 1.2.11|1-crop|N/A|N/A|
+|resnet50.opt (chainer)|ONNX|ailia SDK 1.2.11|None|0.7241|0.9103|
+|resnet50_pytorch|ONNX|ailia SDK 1.2.11|None|0.6852|0.8869|
+|resnet50_pytorch|ONNX|ailia SDK 1.2.11|1-crop|0.7532|0.9253|
 |resnet50 (float)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
 |resnet50 (float)|tflite|TensorFlowLite|None|N/A|N/A|
 |resnet50 (int8)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
 |resnet50 (int8)|tflite|TensorFlowLite|None|N/A|N/A|
+
+## Official Benchmark
+
+|model|InferenceEngine|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|-----|
+|resnet50|pytorch|1-crop|0.7592|0.9281|
+|resnet50|Keras|1-crop|0.759|0.929|
+
+Reference :
+- https://pytorch.org/vision/stable/models.html
+- https://keras.io/ja/applications/
 

@@ -93,6 +93,7 @@ def accuracy(model_name, data):
         print('DATA CNT : %d' % cnt)
         print('TOP1 : %f' % (top1 / cnt))
         print('TOP5 : %f' % (top5 / cnt))
+        print('')
         f.write('DATA CNT : %d' % cnt)
         f.write('\n\TOP1 : %f' % (top1 / cnt))
         f.write('\n\TOP5 : %f' % (top5 / cnt))
