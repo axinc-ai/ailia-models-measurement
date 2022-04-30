@@ -19,6 +19,29 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
+def load_labels():
+    fh1 = open("data/imagenet/LOC_synset_mapping.txt", "r")
+    label_dict = {}
+    line_cnt = 0
+    for line in fh1:
+        class_label = line.split(" ")[0]
+        label_dict[class_label] = line_cnt
+        line_cnt = line_cnt + 1
+    return label_dict
+
+def load_gts():
+    fh1 = open("data/imagenet/LOC_val_solution.csv", "r")
+    gt_dict = {}
+    line_cnt = 0
+    for line in fh1:
+        if line_cnt == 0:
+            line_cnt = line_cnt + 1
+            continue
+        file_path = line.split(",")[0]
+        class_label = line.split(",")[1].split(" ")[0]
+        gt_dict[file_path] = class_label
+        line_cnt = line_cnt + 1
+    return gt_dict
 
 def accuracy(model_name, data):
     if os.path.isdir(data):
@@ -39,6 +62,9 @@ def accuracy(model_name, data):
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
+    label_dict = load_labels()
+    gt_dict = load_gts()
+
     files = glob.glob(os.path.join(pred_dir, "*.txt"))
     files.sort()
 
@@ -49,6 +75,10 @@ def accuracy(model_name, data):
     gt_id = 0
 
     for f in files:
+        name = f.split("/")[-1].split(".")[0]
+        gt = gt_dict[name]
+        gt_id = label_dict[gt]
+        print("filepath : ",name,"gt_label : ",gt,"gt_id : ",gt_id)
         fh1 = open(f, "r")
         line_cnt = 0
         for line in fh1:
@@ -59,7 +89,7 @@ def accuracy(model_name, data):
                 if line_cnt==0:
                     top1 = top1 + 1
                 top5 = top5 + 1
-                break
+            line_cnt = line_cnt + 1
         cnt = cnt + 1
 
     with open(os.path.join(result_dir, 'results.txt'), 'w') as f:

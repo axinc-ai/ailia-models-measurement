@@ -29,8 +29,8 @@ args = parser.parse_args()
 
 def prepare_datasets(data='imagenet'):
     data_dir = os.path.join('data', data)
-    if not os.path.exists(os.path.join(data_dir, 'images')):
-        raise FileNotFoundError(os.path.join(data_dir, 'images'))
+    if not os.path.exists(os.path.join(data_dir, 'ILSVRC/Data/CLS-LOC/val')):
+        raise FileNotFoundError(os.path.join(data_dir, 'ILSVRC/Data/CLS-LOC/val'))
 
 
 def predict(model_name, data):
@@ -50,7 +50,7 @@ def predict(model_name, data):
         work_dir = os.path.join('../ailia-models-tflite', 'image_classification', model_name)
     else:
         work_dir = os.path.join('../ailia-models', 'image_classification', model_name)
-    src_path = os.path.join('data', data, 'images')
+    src_path = os.path.join('data', data, 'ILSVRC/Data/CLS-LOC/val')
     cmd = [
         sys.executable,
         '%s.py' % model_name,
