@@ -71,7 +71,7 @@ def accuracy(model_name, data):
     gt_id = 0
 
     for f in files:
-        name = f.split("/")[-1].split(".")[0]
+        name = f.replace("\\","/").split("/")[-1].split(".")[0]
         gt = gt_dict[name]
         gt_id = label_dict[gt]
         #print("filepath : ",name,"gt_label : ",gt,"gt_id : ",gt_id)
