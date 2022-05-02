@@ -4,6 +4,20 @@ Calculate TOP1 and TOP5 accuracy of image classification API
 
 ## Usage
 
+### Architecture
+
+```mermaid
+sequenceDiagram
+    dataset->>ailia-models: Read images
+    Note right of dataset: validation images
+    prediction.py->>ailia-models: Inference request
+    ailia-models->>prediction.py: Evaluation result
+    Note left of prediction.py: evaluation artifacts
+    accuracy.py->>prediction.py: Read artifacts
+    prediction.py->>accuracy.py: Accuracy result
+    Note left of accuracy.py:  accuracy artifacts
+```
+
 ### Dataset
 
 Please download following files from kaggle.
