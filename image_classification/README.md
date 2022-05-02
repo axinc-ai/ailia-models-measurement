@@ -45,38 +45,63 @@ python3 prediction.py -m MODEL
 Calculate accuracy using prediction result.
 
 ```
-python3 map.py -m MODEL -d imagenet
+python3 accuracy.py -m MODEL
 ```
 
 ### TTA
 
-By default, the aspect ratio is ignored and the image size is resized to 224x224. When CenterCrop is enabled, it maintains the aspect ratio, resizes the short side to 256, and then crops to 224x224. (1-crop-testing)
+By default, the aspect ratio is ignored and the image size is resized to 224x224. When 1-crop is enabled, it maintains the aspect ratio, resizes the short side to 256, and then crops to 224x224. (1-crop-testing) 10-crop is not implemented. For comparison with 1-crop, keep-aspect resizes the short side to 224 and then crops it.
 
 ### Example
 
-- [example_onnx.sh](./example_onnx.sh).
-- [example_tflite.bat](./example_tflite.bat).
+- [example_onnx.sh](./example_onnx.sh)
+- [example_tflite.bat](./example_tflite.bat)
 
 ## Evaluation Result
 
-ImageNet 50000 Validation Images
+### ONNX
 
-|model|Format|InferenceEngine|TTA|TOP1|TOP5|
-|-----|-----|-----|-----|-----|-----|
-|resnet50.opt (chainer)|ONNX|ailia SDK 1.2.11|None|0.7241|0.9103|
-|resnet50_pytorch|ONNX|ailia SDK 1.2.11|None|0.6852|0.8869|
-|resnet50_pytorch|ONNX|ailia SDK 1.2.11|1-crop|0.7532|0.9253|
-|resnet50 (float)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
-|resnet50 (float)|tflite|TensorFlowLite|None|N/A|N/A|
-|resnet50 (int8)|tflite|ailia TFLite Runtime 1.1.1|None|N/A|N/A|
-|resnet50 (int8)|tflite|TensorFlowLite|None|N/A|N/A|
+ImageNet 50000 Validation Images with ailia SDK 1.2.11.
+
+|Model|Precision|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|-----|
+|resnet50_pytorch|float|none|0.6852|0.8869|
+|resnet50_pytorch|float|keep-aspect|0.7444|0.9222|
+|resnet50_pytorch|float|1-crop|0.7532|0.9253|
+|resnet50_chainer|float|none|0.7241|0.9103|
+|resnet50_chainer|float|keep-aspect|0.7546|0.9265|
+|resnet50_chainer|float|1-crop|0.7444|0.9226|
+
+### tflite
+
+ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1.
+
+|Model|Precision|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|-----|
+|resnet50_keras|float|none|N/A|N/A|
+|resnet50_keras|float|1-crop|N/A|N/A|
+|resnet50_keras|int8|none|N/A|N/A|
+|resnet50_keras|int8|1-crop|N/A|N/A|
+|resnet50_keras (recalib)|int8|none|N/A|N/A|
+|resnet50_keras (recalib)|int8|1-crop|N/A|N/A|
+
+ImageNet 50000 Validation Images with TensorFlow 2.7.
+
+|Model|Precision|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|-----|
+|resnet50_keras|float|none|N/A|N/A|
+|resnet50_keras|float|1-crop|N/A|N/A|
+|resnet50_keras|int8|none|N/A|N/A|
+|resnet50_keras|int8|1-crop|N/A|N/A|
+|resnet50_keras (recalib)|int8|none|N/A|N/A|
+|resnet50_keras (recalib)|int8|1-crop|N/A|N/A|
 
 ## Official Benchmark
 
-|model|InferenceEngine|TTA|TOP1|TOP5|
-|-----|-----|-----|-----|-----|
-|resnet50|pytorch|1-crop|0.7592|0.9281|
-|resnet50|Keras|1-crop|0.759|0.929|
+|model|TTA|TOP1|TOP5|
+|-----|-----|-----|-----|
+|resnet50_pytorch|1-crop|0.7592|0.9281|
+|resnet50_keras|1-crop|0.759|0.929|
 
 Reference :
 - https://pytorch.org/vision/stable/models.html

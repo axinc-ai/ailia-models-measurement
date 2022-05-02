@@ -88,6 +88,9 @@ def accuracy(model_name, data):
             line_cnt = line_cnt + 1
         cnt = cnt + 1
 
+    if cnt == 0:
+        raise Exception('Prediction data does not exist \'%s\'' % pred_dir)
+
     with open(os.path.join(result_dir, 'results.txt'), 'w') as f:
         f.write('Accuracy\n')
         print('DATA CNT : %d' % cnt)
@@ -95,8 +98,8 @@ def accuracy(model_name, data):
         print('TOP5 : %f' % (top5 / cnt))
         print('')
         f.write('DATA CNT : %d' % cnt)
-        f.write('\n\TOP1 : %f' % (top1 / cnt))
-        f.write('\n\TOP5 : %f' % (top5 / cnt))
+        f.write('\nTOP1 : %f' % (top1 / cnt))
+        f.write('\nTOP5 : %f' % (top5 / cnt))
 
 
 def main():
