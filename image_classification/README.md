@@ -94,8 +94,10 @@ ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1.
 |-----|-----|-----|-----|-----|
 |resnet50_keras|float|none|0.6755|0.8799|
 |resnet50_keras|float|1-crop|0.7508|0.9217|
-|resnet50_keras|int8|1-crop|N/A|N/A|
-|resnet50_keras (recalib)|int8|1-crop|N/A|N/A|
+|resnet50_keras|int8|1-crop|0.7029|0.9188|
+|resnet50_keras (recalib)|int8|1-crop|0.7467|0.9125|
+
+The int8 model is calibrated with 4 images. The int8 (recalib) model is calibrated with 50,000 images.
 
 ImageNet 50000 Validation Images with TensorFlow 2.7.
 
