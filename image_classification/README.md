@@ -105,8 +105,7 @@ ImageNet 50000 Validation Images with TensorFlow 2.7.
 |-----|-----|-----|-----|-----|
 |resnet50_keras|float|none|0.6755|0.8799|
 |resnet50_keras|float|1-crop|0.7508|0.9217|
-|resnet50_keras|int8|1-crop|N/A|N/A|
-|resnet50_keras (recalib)|int8|1-crop|N/A|N/A|
+|resnet50_keras (recalib)|int8|1-crop|0.7468|0.9121|
 
 ## Official Benchmark
 
