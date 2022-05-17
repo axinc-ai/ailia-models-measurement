@@ -50,6 +50,16 @@ def getBoundingBoxes(
     files = glob.glob(os.path.join(directory, "*.txt"))
     files.sort()
 
+    # Check number of file
+    if isGT:
+        print("GT count : ",len(files))
+    else:
+        print("Pred count : ",len(files))
+    if isGT and "coco2017" in args.data:
+        if(len(files)<4952):
+            print("Invalid processed frame count")
+            sys.exit()
+
     # Read GT detections from txt file
     # Each line of the files in the groundtruths folder represents a ground truth bounding box
     # (bounding boxes that a detector should detect)

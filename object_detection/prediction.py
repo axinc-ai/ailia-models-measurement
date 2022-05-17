@@ -26,6 +26,10 @@ parser.add_argument(
     '-p', '--param', metavar='KEY=VALUE', default=[], nargs='*',
     help='Add a model parameter.'
 )
+parser.add_argument(
+    '-t', '--tflite', action='store_true',
+    help='use tflite model'
+)
 args = parser.parse_args()
 
 
@@ -46,6 +50,7 @@ def predict(model_name, data, label_filter=None):
     data_dir = os.path.join('data', data)
     name = data if label_filter is None else '%s_%s' % (data, '+'.join(label_filter))
     name2 = name if not args.param else '%s__%s' % (name, '_'.join([x.replace('=', '_').replace('.', '_') for x in args.param]))
+    name2 = name2 if not args.tflite else '%s_tflite' % name2
     pred_dir = os.path.join('evaluation', model_name, name2, 'predictions')
     gt_dir = os.path.join('evaluation', model_name, name2, 'groundtruths')
     gt_src_dir = os.path.join('data', data, 'groundtruths')
@@ -53,7 +58,10 @@ def predict(model_name, data, label_filter=None):
     if not os.path.exists(pred_dir):
         os.makedirs(pred_dir)
 
-    work_dir = os.path.join('../ailia-models', 'object_detection', model_name)
+    if args.tflite:
+        work_dir = os.path.join('../ailia-models-tflite', 'object_detection', model_name)
+    else:
+        work_dir = os.path.join('../ailia-models', 'object_detection', model_name)
     if os.path.exists(os.path.join(data_dir, 'images.txt')) :
         with open(os.path.join(data_dir, 'images.txt')) as f:
             src_path = f.read()
@@ -69,8 +77,11 @@ def predict(model_name, data, label_filter=None):
         '--write_prediction',
     ]
     for kv in args.param:
-        key, value = kv.split('=')
-        cmd.extend(['-%s' % key, value])
+        if '=' in kv:
+            key, value = kv.split('=')
+            cmd.extend(['-%s' % key, value])
+        else:
+            cmd.extend(['--%s' % kv])
 
     print("Predicting images ...")
     try:
