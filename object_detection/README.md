@@ -36,6 +36,25 @@ You can use -th option for mAP75.
 python3 map.py -m MODEL -d coco2017 -th 0.75
 ```
 
+## Result
+
+### ONNX
+
+|Model|Format|Accuracy|mAP75|mAP50|
+|-----|-----|-----|-----|-----|
+|yolov3_tiny|ONNX|float|12.65|35.76|
+|yolox_tiny|ONNX|float|31.36|47.04|
+
+### tflite
+
+|Model|Format|Accuracy|mAP75|mAP50|
+|-----|-----|-----|-----|-----|
+|yolov3_tiny|tflite|float|11.98|34.96|
+|yolov3_tiny|tflite|int8|9.68|33.62|
+|yolox_tiny|tflite|float|32.17|47.16|
+|yolox_tiny|tflite|int8|31.08|46.57|
+
 ### Example
 
-See [example.sh](./example.sh).
+- [example_onnx.sh](./example_onnx.sh).
+- [example_tflite.sh](./example_tflite.sh).
