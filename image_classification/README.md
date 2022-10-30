@@ -89,7 +89,7 @@ ImageNet 50000 Validation Images with ailia SDK 1.2.11.
 
 ### tflite
 
-ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1.
+ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1 (resnet), 1.1.6 (mobilenet).
 
 |Model|Precision|TTA|TOP1|TOP5|
 |-----|-----|-----|-----|-----|
