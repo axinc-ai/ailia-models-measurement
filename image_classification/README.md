@@ -69,7 +69,8 @@ By default, the aspect ratio is ignored and the image size is resized to 224x224
 ### Example
 
 - [example_onnx.sh](./example_onnx.sh)
-- [example_tflite.bat](./example_tflite.bat)
+- [example_tflite_resnet.bat](./example_tflite_resnet.bat)
+- [example_tflite_mobilenet.bat](./example_tflite_mobilenet.bat)
 
 ## Evaluation Result
 
@@ -88,7 +89,7 @@ ImageNet 50000 Validation Images with ailia SDK 1.2.11.
 
 ### tflite
 
-ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1.
+ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1 (resnet), 1.1.6 (mobilenet).
 
 |Model|Precision|TTA|TOP1|TOP5|
 |-----|-----|-----|-----|-----|
@@ -96,6 +97,15 @@ ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1.
 |resnet50_keras|float|1-crop|0.7508|0.9217|
 |resnet50_keras|int8|1-crop|0.7029|0.9188|
 |resnet50_keras (recalib)|int8|1-crop|0.7467|0.9125|
+|mobilenetv1_keras|float|1-crop|0.7052|0.8956|
+|mobilenetv1_keras (recalib)|int8|1-crop|0.6939|0.8804|
+|mobilenetv2_keras|float|1-crop|0.7177|0.9048|
+|mobilenetv2_keras (recalib)|int8|1-crop|0.7114|0.8994|
+
+<!--
+|mobilenetv1_keras|int8|1-crop|0.3461|0.5454|
+|mobilenetv2_keras|int8|1-crop|0.0014|0.0064|
+-->
 
 The int8 model is calibrated with 4 images. The int8 (recalib) model is calibrated with 50,000 images.
 
@@ -113,6 +123,7 @@ ImageNet 50000 Validation Images with TensorFlow 2.7.
 |-----|-----|-----|-----|
 |resnet50_pytorch|1-crop|0.7592|0.9281|
 |resnet50_keras|1-crop|0.759|0.929|
+|mobilenetv1_keras|1-crop|0.665|0.871|
 
 Reference :
 - https://pytorch.org/vision/stable/models.html
