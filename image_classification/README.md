@@ -103,6 +103,8 @@ ImageNet 50000 Validation Images with ailia TFLite Runtime 1.1.1 (resnet), 1.1.6
 |mobilenetv2_keras (recalib)|int8|1-crop|0.7114|0.8994|
 |efficientnetlite0_keras|float|1-crop|0.7506|0.9231|
 |efficientnetlite0_keras (recalib)|int8|1-crop|0.7499|0.9210|
+|efficientnetlite0_torch|float|1-crop|0.7509|0.9238|
+|efficientnetlite0_torch|int8|1-crop|0.7496|0.9228|
 
 <!--
 |mobilenetv1_keras|int8|1-crop|0.3461|0.5454|
@@ -128,8 +130,10 @@ ImageNet 50000 Validation Images with TensorFlow 2.7.
 |resnet50_keras|1-crop|0.759|0.929|
 |mobilenetv1_keras|1-crop|0.665|0.871|
 |efficientnetlite0_keras|1-crop|0.751|N/A|
+|efficientnetlite0_torch|1-crop|0.754|N/A|
 
 Reference :
 - https://pytorch.org/vision/stable/models.html
 - https://keras.io/ja/applications/
+- https://github.com/rwightman/pytorch-image-models/blob/main/results/results-imagenet.csvs
 
