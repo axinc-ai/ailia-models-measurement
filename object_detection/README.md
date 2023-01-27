@@ -44,6 +44,7 @@ python3 map.py -m MODEL -d coco2017 -th 0.75
 |-----|-----|-----|-----|-----|
 |yolov3_tiny|ONNX|float|12.65|35.76|
 |yolox_tiny|ONNX|float|31.36|47.04|
+|yolox_tiny|ONNX|int8|28.20|45.15|
 
 ### tflite
 
