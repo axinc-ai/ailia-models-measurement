@@ -42,8 +42,12 @@ python3 map.py -m MODEL -d coco2017 -th 0.75
 
 |Model|Format|Accuracy|mAP75|mAP50|
 |-----|-----|-----|-----|-----|
-|yolov3_tiny|ONNX|float|12.65|35.76|
+|yolov3_tiny|ONNX|float (ailia)|12.65|35.76|
+|yolov3_tiny|ONNX|float (onnx runtime)|12.27|34.93|
+|yolov3_tiny|ONNX|int8 (per_tensor)|6.33|32.16|
 |yolox_tiny|ONNX|float|31.36|47.04|
+|yolox_tiny|ONNX|int8 (per_tensor)|28.20|45.15|
+|yolox_tiny|ONNX|int8 (per_channel)|28.78|44.83|
 
 ### tflite
 
